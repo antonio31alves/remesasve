@@ -1,0 +1,167 @@
+{% extends 'templates/template_base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="block-content">
+	<div class="container">
+		<div class="mb-5">
+			<!-- Material form register -->
+<div class="card">
+
+    <h5 class="card-header info-color white-text  text-center py-4"><strong>Crear cuenta nueva</strong></h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" action="#!">
+
+            <div class="form-row">
+                <div class="col">
+                    <!-- First name -->
+                    <div class="md-form">
+                        <input type="text" id="materialRegisterFormFirstName" class="form-control" required="">
+                        <label for="materialRegisterFormFirstName">Nombres</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Last name -->
+                    <div class="md-form">
+                        <input type="email" id="materialRegisterFormLastName" class="form-control" required="">
+                        <label for="materialRegisterFormLastName">Apellidos</label>
+                    </div>
+                </div>
+            </div>
+
+             <div class="form-row">
+                <div class="col-12 col-md-6">
+                    <!-- First name -->
+                    <div class="md-form">
+                        <input type="email" id="materialRegisterFormEmail" class="form-control" required="">
+                        <label for="materialRegisterFormEmail">E-mail</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <!-- Last name -->
+                    <div class="md-form">
+                        <input type="email" id="materialRegisterFormEmail2" class="form-control" required="">
+                        <label for="materialRegisterFormEmail2">Confirmar e-mail</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <!-- First name -->
+                    <div class="md-form">
+                        <input type="password" id="materialRegisterFormPassword" class="form-control" required="">
+                        <label for="materialRegisterFormPassword">Contrase&ntilde;a</label>
+                        <small id="materialRegisterFormPasswordHelpBlock" class="form-text d-flex align-items-start text-muted mb-4">
+                    		Al menos 8 caracteres
+                		</small>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Last name -->
+                    <div class="md-form">
+                        <input type="password" id="materialRegisterFormPassword2" class="form-control" required="">
+                        <label for="materialRegisterFormPassword2">Confirmar contrase&ntilde;a</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Newsletter -->
+           <!--  <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="materialRegisterFormNewsletter">
+                <label class="form-check-label" for="materialRegisterFormNewsletter">Subscribe to our newsletter</label>
+            </div> -->
+
+            <!-- Sign up button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Registrarse</button>
+
+            <p>¿Tienes cuenta en RemesasVE?
+                <a href="{% url 'sign-up' %}">Iniciar sesi&oacute;n</a>
+            </p>
+            <!-- Social register -->
+            <!-- <p>or sign up with:</p>
+
+            <a type="button" class="btn-floating btn-fb btn-sm">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a type="button" class="btn-floating btn-tw btn-sm">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a type="button" class="btn-floating btn-li btn-sm">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a type="button" class="btn-floating btn-git btn-sm">
+                <i class="fab fa-github"></i>
+            </a>
+ -->
+            <hr>
+
+            <!-- Terms of service -->
+            <p>Al hacer clic en
+                <em><b>Registrarse</b>,</em> acepta nuestros
+                <a href="" target="_blank">términos de servicio</a>
+
+            <!-- <p>By clicking
+                <em>Sign up</em> you agree to our
+                <a href="" target="_blank">terms of service</a> -->
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form register -->
+		</div>
+	</div>
+</section>
+<section class="p-5">
+ <br>
+</section>
+
+{% endblock %}
+
+
+
+
+{% block footer %}
+<!-- Footer -->
+<footer class="page-footer font-small elegant-color-dark fixed-bottom">
+  <!-- Footer Elements -->
+  <div class="container">
+    <ul class="list-unstyled list-inline text-center pt-1">
+      <li class="list-inline-item">
+        <a href="https://wa.me/447576050755?text=Hola,%20me%20gustaria%20enviar%20dinero%20con%20RemesasVE.%20¿Como%20es%20el%20proceso?%20" class="nav-link whatsapp-ic" >
+            <i class="fab fa-lg fa-whatsapp"></i>
+          </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="https://www.instagram.com/remesasve/" class="nav-link">
+            <img src="{% static 'mdbootstrap/img/social_img/instagram.png' %}" width="25px" height="25px" style="margin-bottom: 4px">
+            <!-- <i class="fab fa-lg fa-instagram"></i> -->
+          </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" class="nav-link fb-ic">
+            <i class="fab fa-lg fa-facebook-f"></i>
+          </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="https://twitter.com/remesasve" class="nav-link tw-ic">
+            <i class="fab fa-lg fa-twitter"></i>
+          </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+  </div>
+  <!-- Footer Elements -->
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-2">RemesasVE © 2020 Copyright. Todos los derechos reservados</div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+{% endblock %}

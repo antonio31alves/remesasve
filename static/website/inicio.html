@@ -1,0 +1,65 @@
+{% extends 'templates/template_base.html' %}
+
+{% block content %}
+
+
+
+{% if error_user %}
+ <script type="text/javascript">
+ 	emitir_mensaje('El usuario introducido no existe');
+ </script>
+{% endif %}
+
+
+{% if error_password %}
+ <script type="text/javascript">
+ 	emitir_mensaje('La contrase\u00F1a introducida es invalida');
+ </script>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="view background-body">
+	<div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+		<div class="container">
+			<div class="row">
+
+				
+				<div class="col-12">
+					<h1>RemesasVE</h1>
+				</div>
+				<div class="col-12">
+					<h4>Facil, rapido y seguro</h4>
+				</div>
+			
+				<!-- <a href="{% url 'log-in' %}" class="btn btn-default waves-effect ml-3">Iniciar sesi&oacute;n</a> -->
+				<!-- <a href="{% url 'sign-up' %}" class="btn btn-primary">Registrate</a> -->
+				<a class="btn btn-default waves-effect ml-" data-toggle="modal" data-target="#modalLRForm" id="log-in-button-index">Iniciar sesi&oacute;n</a>
+				<a class="btn btn-primary" data-toggle="modal" data-target="#modalLRForm" id="sign-up-button-index">Registrate</a>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
+
+
+  
+

@@ -1,0 +1,382 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}RemesasVE{% endblock %}</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="{% static 'mdbootstrap/img/mdb-favicon.ico' %}" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'mdbootstrap/css/bootstrap.min.css' %}">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="{% static 'mdbootstrap/css/mdb.min.css' %}">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="{% static 'mdbootstrap/css/style.css' %}">
+
+  <link rel='stylesheet' href="{% static 'mdbootstrap/css/compiled-4.16.0.min.css' %}" type='text/css' media='all' />
+
+  <script src="{% static 'templates/js/sweetalert2.js' %}"></script>
+  <script type="text/javascript" src="{% static 'templates/js/funciones.js' %}"></script>
+
+
+
+
+
+
+
+
+  <style type="text/css">
+
+    body.modal-open {
+    overflow: hidden;
+    }
+  	.background-body{
+  		height: 100vh;
+  		background-repeat: no-repeat;
+  		background-size: cover;
+  		background: url({% static 'mdbootstrap/img/fondo.jpg' %});
+  	}
+
+    .block-content{
+      margin-top: 150px;
+    }
+
+ 
+  </style>
+</head>
+
+<body class="grey lighten-3">
+{% block header %}
+<section class=" text-light grey darken-4 fixed-top mb-0">
+	<div class="container">
+			<div class="d-flex bd-highlight mb-0">
+  				<div class="p-1 bd-highlight d-none d-md-block">info@remesasve.com</div>
+  				<div class="p-1 bd-highlight "><a class="grey-text" href="https://wa.me/447576050755?text=Hola,%20me%20gustaria%20enviar%20dinero%20con%20RemesasVE.%20¿Como%20es%20el%20proceso?%20"><i class="fab fa-whatsapp text-success"></i> +44 7593 888 558</a></div>
+  				<span class="p-1 bd-highlight col-4 col-md-5 col-xl-7"><marquee><b class="text-success">1GPB</b><img src="{% static 'mdbootstrap/img/language/english.svg' %}" width="25px" height="20px"><b class="text-success">/</b><b class="text-success">200.000,00VES</b><img src="{% static 'mdbootstrap/img/language/venezuela.svg' %}" width="25px" height="20px"></marquee></span>
+          
+  				<div class="ml-auto p-1 bd-highlight " style="cursor: pointer;">
+            <span class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+              <b class="d-none d-sm-inline-block">ES</b>
+              <a href="#" title="ES">
+                <img src="{% static 'mdbootstrap/img/language/spanish.svg' %}" width="25px" height="24px">
+              </a>
+            </span>
+            <div class="dropdown-menu grey lighten-2"  aria-labelledby="dropdownMenuButton" >
+              <h6 class="dropdown-header">Selecciona tu idioma</h6>
+              <span class="dropdown-item active">
+                <img src="{% static 'mdbootstrap/img/language/spanish.svg' %}" width="25px" height="23px">
+                <b> Espa&ntilde;ol</b>
+              </span>
+              <span class="dropdown-item">
+                <img src="{% static 'mdbootstrap/img/language/english.svg' %}" width="25px" height="23px">
+                <b> Ingles</b>
+              </span>
+              <span class="dropdown-item">
+                <img src="{% static 'mdbootstrap/img/language/portugal.svg' %}" width="25px" height="23px">
+                <b> Portugues</b>
+              </span>
+            </div>
+  				</div>
+			</div>
+	</div>
+</section>
+{% endblock %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-xl navbar-dark elegant-color-dark scrolling-navbar" style="z-index: 1; margin-top:27px">
+	<div class="container">
+		<a href="#"><img src="{% static 'mdbootstrap/img/logo.png'%}" width="165px" height="50px" class="mt-1"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 	aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active" id="inicio">
+					<a class="nav-link" href="{% url 'inicio' %}">Inicio </a>
+				</li>
+				<li class="nav-item" id="nosotros">
+					<a class="nav-link" href="{% url 'quienes-somos' %}">Nosotros</a>
+				</li>
+				<li class="nav-item" id="preguntas_frecuentes">
+					<a class="nav-link" href="{% url 'preguntas-frecuentes' %}">Preguntas Frecuentes</a>
+				</li>
+				<li class="nav-item" id="tipo_cambio">
+					<a class="nav-link" href="{% url 'tipo-cambio' %}">Tipo de Cambio</a>
+				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link" href="{% url 'contactenos' %}">Contactenos</a>
+				</li> -->
+			</ul>
+			<ul class="navbar-nav nav-flex-icons">
+				<li class="nav-item">
+					<a href="https://www.instagram.com/remesasve/" class="nav-link">
+						<i class="fab fa-instagram"></i>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="https://twitter.com/remesasve" class="nav-link">
+						<i class="fab fa-twitter"></i>
+					</a>
+				</li>
+			</ul>
+		<ul class="navbar-nav nav-flex-icons">
+				<li class="nav-item">
+					<a class="btn btn-outline-info waves-effect" data-toggle="modal" data-target="#modalLRForm" id="log-in-button">
+						Entrar
+					</a>
+				</li>
+				<li class="nav-item">
+          <a class="btn btn-info" data-toggle="modal" data-target="#modalLRForm" id="sign-up-button">
+            Registro
+          </a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+{% endblock %}
+
+
+{% block content %}
+{% endblock %}
+
+
+{% block modal %}
+<!--Modal: Login / Register Form-->
+<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Modal cascading tabs-->
+      <div class="modal-c-tabs">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#panel-login" role="tab" id="panel-login-nav"><i class="fas fa-user mr-1"></i>
+              Iniciar sesi&oacute;n</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#panel-signup" role="tab" id="panel-signup-nav"><i class=" fas fa-user-plus mr-1"></i>
+              Cuenta nueva</a>
+          </li>
+        </ul>
+
+        <!-- Tab panels -->
+        <div class="tab-content">
+          <!--Panel LogIn-->
+          <div class="tab-pane fade in show active" id="panel-login" role="tabpanel">
+
+            <!--Body-->
+            <div class="modal-body mb-1">
+              <form method="POST" action="{% url 'inicio' %}">
+                {% csrf_token %}
+                <div class="md-form form-sm mb-5">
+                  <i class="fas fa-envelope prefix"></i>
+                  <input type="email" id="modalLRInput10" class="form-control form-control-sm validate" name="usernamelogin" required="">
+                  <label data-error="wrong" data-success="right" for="modalLRInput10" >Tu email</label>
+                </div>
+                <div class="md-form form-sm mb-4">
+                  <i class="fas fa-lock prefix"></i>
+                  <input type="password" id="modalLRInput11" class="form-control form-control-sm validate" name="passwordlogin" required="">
+                  <label data-error="wrong" data-success="right" for="modalLRInput11">Tu contrase&ntilde;a</label>
+                </div>
+                <p><a href="#" class="blue-text">Olvidaste tu contrase&ntilde;a?</a></p>
+            </div>
+            <!--Footer-->
+           <div class="modal-footer d-flex align-items- justify-content-center">
+              <!-- <div class="options text-center text-md-center d-flex align-items-center">
+                <p>Inicia sesi&oacute;n con <a  href="#" class="blue-text"></a></p>
+                
+              </div> -->
+
+            <div class="text-center mt-2">
+                <button class="btn btn-info" name="log-in-action" id="log-in-action" value="True">Iniciar sesi&oacute;n </button>
+                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cancelar</button>
+              </div>
+              </form>
+               <div class="options text-center text-md-center d-flex align-items-center">
+                <p>Nuevo en RemesasVE?<a data-toggle="tab" href="#panel-signup" class="blue-text" id="create-account"> <b>Crear una cuenta</b></a></p>
+                
+              </div>
+            </div>
+
+          </div>
+          <!--/.Panel LogIn-->
+
+
+          <!--Panel SignUp-->
+          <div class="tab-pane fade" id="panel-signup" role="tabpanel" >
+
+            <!--Body-->
+            <div class="modal-body">
+              <form method="POST" action="{% url 'inicio' %}">
+                {% csrf_token %}
+              <div class="md-form form-sm mb-1">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate" name="username" required="">
+                <label data-error="wrong" data-success="right" for="modalLRInput12">Tu email</label>
+              </div>
+
+              <div class="md-form form-sm mb-1">
+                <div class="md-form">
+                  <i class="fas fa-lock prefix"></i>
+                    <input type="password" id="materialRegisterFormPassword" class="form-control" required="" name="password1">
+                    <label for="materialRegisterFormPassword">Contrase&ntilde;a</label>
+                    <small id="materialRegisterFormPasswordHelpBlock" class="form-text d-flex align-items-start text-muted mb-4">Al menos 8 caracteres</small>
+                  </div>
+              </div>
+
+              <div class="md-form form-sm mb-1">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" id="modalLRInput14" class="form-control form-control-sm validate" name="password2" required="">
+                <label data-error="wrong" data-success="right" for="modalLRInput14">Repetir contrase&ntilde;a</label>
+              </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer d-flex align-items-center justify-content-center">
+              <div class="text-center mt-1">
+                <button class="btn btn-info" name="sign-up-create" id="sign-up-create" value="True">Crear </button>
+                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cancelar</button>
+              </div>
+            </form>
+              <div class="options text-right">
+                <p class="pt-1">Tienes cuenta en RemesasVE? <a href="#" class="blue-text" data-toggle="tab" id="log-in"><b>Iniciar sesi&oacute;n</b></a></p>
+              </div>
+            </div>
+          </div>
+          <!--/.Panel SignUp-->
+        </div>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Login / Register Form-->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% block footer %}
+<!-- Footer -->
+<footer class="page-footer font-small elegant-color-dark">
+  <!-- Footer Elements -->
+  <div class="container">
+    <ul class="list-unstyled list-inline text-center pt-1">
+      <li class="list-inline-item">
+        <a href="https://wa.me/447576050755?text=Hola,%20me%20gustaria%20enviar%20dinero%20con%20RemesasVE.%20¿Como%20es%20el%20proceso?%20" class="nav-link whatsapp-ic" >
+            <i class="fab fa-lg fa-whatsapp"></i>
+          </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="https://www.instagram.com/remesasve/" class="nav-link">
+            <img src="{% static 'mdbootstrap/img/social_img/instagram.png' %}" width="25px" height="25px" style="margin-bottom: 4px">
+            <!-- <i class="fab fa-lg fa-instagram"></i> -->
+          </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" class="nav-link fb-ic">
+            <i class="fab fa-lg fa-facebook-f"></i>
+          </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="https://twitter.com/remesasve" class="nav-link tw-ic">
+            <i class="fab fa-lg fa-twitter"></i>
+          </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+  </div>
+  <!-- Footer Elements -->
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-2">RemesasVE © 2020 Copyright. Todos los derechos reservados</div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+{% endblock %}
+
+  
+  
+  <!-- jQuery -->
+  <script type="text/javascript" src="{% static 'mdbootstrap/js/jquery.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'mdbootstrap/js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'mdbootstrap/js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'mdbootstrap/js/mdb.min.js' %}"></script>
+
+  <script>
+  $(document).ready(function(){
+
+
+    $("#log-in, #log-in-button, #log-in-button-index").click(function(){
+      $("#panel-login-nav").addClass("active");
+      $("#panel-login").addClass("in show active");
+      $("#panel-signup-nav").removeClass("active");
+      $("#panel-signup").removeClass("in show active");
+    });
+    $("#create-account, #sign-up-button, #sign-up-button-index").click(function(){
+      $("#panel-login-nav").removeClass("active");
+      $("#panel-login").removeClass("in show active");
+      $("#panel-signup-nav").addClass("active");
+      $("#panel-signup").addClass("in show active");
+    });
+
+
+  });
+
+
+  /*CAMBIAR LA CLASE ACTIVE SEGUN LA OPCION SELECCIONADA */
+  active_option_menu({{value_menu_active}});
+
+</script>
+
+  
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript">
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+      if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+      }, false);
+      });
+      }, false);
+    })();
+  </script>
+
+</body>
+</html>
