@@ -32423,7 +32423,7 @@ table.table a.btn.btn-whatsapp {
 .pswp__button--arrow--right::before {
     width: 44px;
     height: 44px;
-    background: url(../img/lightbox/default-skin.png) 0 0 no-repeat;
+  
     background-size: 264px 88px
 }
 
@@ -32434,7 +32434,7 @@ table.table a.btn.btn-whatsapp {
     .pswp--svg .pswp__button,
     .pswp--svg .pswp__button--arrow--left::before,
     .pswp--svg .pswp__button--arrow--right::before {
-        background-image: url(../img/lightbox/default-skin.svg)
+        
     }
     .pswp--svg .pswp__button--arrow--left,
     .pswp--svg .pswp__button--arrow--right {
