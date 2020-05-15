@@ -18,23 +18,15 @@ from django.contrib import admin
 from django.contrib.auth.views import logout_then_login
 from django.urls import path, include
 from django.views.generic import RedirectView
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
-
     #NATIVE FROM DJANGO
     path('admin/', admin.site.urls),
     path('logout', logout_then_login, name='logout'),
     path('accounts/login/', RedirectView.as_view(url='/')),
-
-
-
-
     # 1- URLS WEBSITE
     path(r'', include('webapps.website.urls'), name="website"),
-
-    
-
-
     # 2- URLS ADMIN DASHBOARD SYSTEM
     path(r'dashboard/', include('webapps.dashboard.urls'), name="dashboard"),
-]
+]   +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
