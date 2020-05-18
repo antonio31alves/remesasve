@@ -4,7 +4,6 @@ from .views import Dashboard
 
 
 urlpatterns = [
-	# path('', login_required(Dashboard.as_view(), redirect_field_name='/'), name="dashboard"),
-	path('dashboard', Dashboard.as_view()), name="dashboard",
+	path('', login_required(Dashboard.as_view(), redirect_field_name='/'), name="dashboard"),
 
 ]
