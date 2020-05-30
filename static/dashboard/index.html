@@ -1,7 +1,57 @@
-Bienvenido {{user.username}}
+{% extends 'templates/template_dashboard.html' %}
+{% load static %}
+
+
+<!-- Bienvenido {{user.username}}
 
 
 
 SE SUPONE QUE YO SOY EL SISTEMA ADMINISTRATIVO
 
-<a href="{% url 'logout' %}">LOG OUT</a>
+<a href="{% url 'logout' %}">LOG OUT</a> -->
+
+{% block content %}
+	<div class="content">
+		<div class="row">
+			<div class="col s12">
+				
+					<table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
+				</div>
+			</div>
+		</div>
+
+	<!-- <div class="container">
+	    <div class="row">
+	      	<div class="col s12 m12 l12 xl12 offset-s0 offset-m2 offset-l2 offset-xl2">
+	      	This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you
+	        have to use two copies of the same UL.
+	    	</div>
+	    </div>
+    </div> -->
+{% endblock %}

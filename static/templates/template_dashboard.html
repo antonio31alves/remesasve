@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}"  media="screen,projection"/>
+	<script src="{% static 'templates/js/sweetalert2.js' %}"></script>
+  	<script type="text/javascript" src="{% static 'templates/js/funciones.js' %}"></script>
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+</head>
+<style type="text/css">
+
+	.h{
+		height: 130px;
+	}
+
+	.h-1{
+		height: 50px;
+	}
+	.mb{
+		margin-bottom: 20px;
+	}
+
+	.mt{
+		margin-top: 20px;
+	}
+
+	.mt-1{
+		margin-top: 70px;
+	}
+
+	.content{
+		padding-left: 300px;
+		height: 800px;
+
+	}
+	nav{
+		padding-left: 300px;
+	}
+
+	@media only screen and  (max-width: 992px){
+		.content, nav{
+			padding-left: 0;
+		}
+	}
+</style>
+<body>
+	{% block header %}
+	{% if user.userprofile.email_active == False %}
+	 <script type="text/javascript">
+	 	emitir_mensaje('info','¡Bienvenido a RemesasVE!','Para continuar usando nuestro servicio es necesario que confirmes tu direccion de correo electronico a traves del link que acabamos de enviar a {{user}}. Por favor revisa tu correo y sigue las instrucciones. (Recuerda revisar tu correo no deseado o spam).');
+	 </script>
+	{% endif %}
+	{% if user.userprofile.email_active == True and user.userprofile.complete_perfil == False %}
+	 <script type="text/javascript">
+	 	if(window.location.pathname != '/dashboard/profile/'){ 
+	 		emitir_mensaje_datosuser('info','¡Bienvenido a RemesasVE!','Ya hemos confirmado tu direccion de correo electronico. Ahora ayudanos a completar los datos de tu perfil.');
+	 	}
+	 </script>
+	{% endif %}
+	{% endblock %}
+
+	{% block nav %}
+	<div class="navbar-fixed"> 
+		<nav class="grey darken-4">
+			<a class="brand-logo left show-on-small hide-on-large-only" style="margin-left: 40px"><img src="{% static 'mdbootstrap/img/logo.png'%}" width="140px" height="50px" ></a>
+			<a href="#" data-target="slide-out" class="sidenav-trigger white-text" style="margin-top: 8px;"><i class="material-icons">menu</i></a>
+			<a class="dropdown-trigger btn btn-floating btn-medium waves-effect waves-light light-blue darken-1 right" data-target='dropdown-user' style="margin-top: 10px; margin-right: 10px;"><i class="material-icons" style="margin-top: -10px;">person</i></a>
+			<ul id='dropdown-user' class='dropdown-content' style="z-index: 1">
+			    <div class="center"><b class="blue-text text-darken-4">{{user}}</b></div>
+			    <a href="{% url 'profile' %}" class="center" style="margin-top: -40px;"><sub class="blue-text">Ver el perfil personal</sub></a>
+			    <li class="divider"></li>
+			    <li><a href="#!" class="blue-text text-darken-3" onclick="emitir_mensaje('warning','En construcci&oacute;n.');"><i class="material-icons">settings</i>Ajustes</a></li>
+			    <li><a href="{% url 'logout' %}" class="blue-text text-darken-3"><i class="material-icons">exit_to_app</i>Finalizar sesi&oacute;n</a></li>
+			 </ul>
+		</nav>
+
+	</div>
+	{% if user.userprofile.email_active == False %}
+	<nav class="col s12 red darken-1" style="margin-top: -12px;">
+		<h6>Necesitamos que confirmes tu direccion de correo electronico <b>{{user}}</b> - <ins><a href="#enviar-link" onclick="emitir_mensaje('warning','En construcci&oacute;n.');">Enviar link de confirmaci&oacute;n nuevamente</a></ins></h6>
+	</nav>
+	{% endif %}
+	<ul class="sidenav sidenav-fixed grey darken-4" id="slide-out">
+		<li>
+			<div class="brand-logo center">
+				<img src="{% static 'mdbootstrap/img/logo.png'%}" width="140px" height="50px" >
+			</div>
+		</li>
+		<div class="divider" style="margin-top: -5px;"></div>
+		<li>
+			<a href="{% url 'dashboard' %}" class="white-text"><i class="material-icons white-text">format_list_bulleted</i>Actividad</a>
+		</li>
+		<li>
+			<a href="#!" class="white-text" onclick="emitir_mensaje('warning','En construcci&oacute;n.');"><i class="material-icons white-text">supervisor_account</i>Destinatarios</a>
+		</li>
+		<div class="divider white-text"></div>
+		<li>
+			<a href="{% url 'logout' %}" class="white-text"><i class="material-icons white-text">exit_to_app</i>Cerrar sesi&oacute;n</a>
+		</li>
+	</ul>
+
+
+
+	
+	{% endblock %}
+
+
+{% block content %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="{% static 'mdbootstrap/js/jquery.min.js' %}"></script>
+  <script src="{% static 'materialize/js/materialize.min.js' %}"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+ 	$('.select').formSelect();
+	
+    $('.sidenav').sidenav();
+   	$('.dropdown-trigger').dropdown({
+   	 	constrainWidth: false,
+   	 	//coverTrigger: false
+   	 });
+   	var today = new Date();
+   	var year= today.getFullYear()
+	today.setMonth(today.getMonth() - 216);
+	var mayor_edad = new Date(today);
+   	 $('.datepicker').datepicker({
+   	 	defaultDate: new Date(mayor_edad),
+   	 	maxDate: new Date(mayor_edad),
+   	 	yearRange: [1930, year],
+   	 });
+
+  });
+       
+  </script>
+</body>
+</html>

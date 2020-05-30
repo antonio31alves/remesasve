@@ -26,11 +26,6 @@
 
 
 
-
-
-
-
-
   <style type="text/css">
 
     body.modal-open {
@@ -47,7 +42,15 @@
       margin-top: 150px;
     }
 
- 
+  .show-hide-password{
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+  }
+
+
   </style>
 </head>
 
@@ -69,15 +72,15 @@
             </span>
             <div class="dropdown-menu grey lighten-2"  aria-labelledby="dropdownMenuButton" >
               <h6 class="dropdown-header">Selecciona tu idioma</h6>
-              <span class="dropdown-item active">
+              <span class="dropdown-item active" onclick="emitir_mensaje('warning','En construcci&oacute;n.');">
                 <img src="{% static 'mdbootstrap/img/language/spanish.svg' %}" width="25px" height="23px">
                 <b> Espa&ntilde;ol</b>
               </span>
-              <span class="dropdown-item">
+              <span class="dropdown-item" onclick="emitir_mensaje('warning','En construcci&oacute;n.');">
                 <img src="{% static 'mdbootstrap/img/language/english.svg' %}" width="25px" height="23px">
                 <b> Ingles</b>
               </span>
-              <span class="dropdown-item">
+              <span class="dropdown-item" onclick="emitir_mensaje('warning','En construcci&oacute;n.');">
                 <img src="{% static 'mdbootstrap/img/language/portugal.svg' %}" width="25px" height="23px">
                 <b> Portugues</b>
               </span>
@@ -89,6 +92,7 @@
 {% endblock %}
 
 {% block nav %}
+
 <nav class="navbar navbar-expand-xl navbar-dark elegant-color-dark scrolling-navbar" style="z-index: 1; margin-top:27px">
 	<div class="container">
 		<a href="#"><img src="{% static 'mdbootstrap/img/logo.png'%}" width="165px" height="50px" class="mt-1"></a>
@@ -101,7 +105,7 @@
 					<a class="nav-link" href="{% url 'inicio' %}">Inicio </a>
 				</li>
 				<li class="nav-item" id="nosotros">
-					<a class="nav-link" href="{% url 'quienes-somos' %}">Nosotros</a>
+					<a class="nav-link" href="{% url 'quienes-somos' %}" >Nosotros</a>
 				</li>
 				<li class="nav-item" id="preguntas_frecuentes">
 					<a class="nav-link" href="{% url 'preguntas-frecuentes' %}">Preguntas Frecuentes</a>
@@ -186,13 +190,14 @@
                 {% csrf_token %}
                 <div class="md-form form-sm mb-5">
                   <i class="fas fa-envelope prefix"></i>
-                  <input type="email" id="modalLRInput10" class="form-control form-control-sm validate" name="usernamelogin" required="">
+                  <input type="email" id="modalLRInput10" autocomplete="off" class="form-control form-control-sm validate" name="usernamelogin" required="" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
                   <label data-error="wrong" data-success="right" for="modalLRInput10" >Tu email</label>
                 </div>
                 <div class="md-form form-sm mb-4">
                   <i class="fas fa-lock prefix"></i>
-                  <input type="password" id="modalLRInput11" class="form-control form-control-sm validate" name="passwordlogin" required="">
-                  <label data-error="wrong" data-success="right" for="modalLRInput11">Tu contrase&ntilde;a</label>
+                   <div class="d-flex justify-content-end"><i class="fa fa-eye-slash show-hide-password" id="show-hide-login"></i></div>
+                  <input type="password" id="password" class="form-control form-control-sm validate" name="passwordlogin" required="">
+                  <label data-error="wrong" data-success="right" for="password" maxlength="45">Tu contrase&ntilde;a</label>
                 </div>
                 <p><a href="#" class="blue-text">Olvidaste tu contrase&ntilde;a?</a></p>
             </div>
@@ -217,7 +222,6 @@
           </div>
           <!--/.Panel LogIn-->
 
-
           <!--Panel SignUp-->
           <div class="tab-pane fade" id="panel-signup" role="tabpanel" >
 
@@ -227,23 +231,26 @@
                 {% csrf_token %}
               <div class="md-form form-sm mb-1">
                 <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate" name="username" required="">
-                <label data-error="wrong" data-success="right" for="modalLRInput12">Tu email</label>
+                <input type="email" id="modalLRInput12" autocomplete="off"  pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" class="form-control form-control-sm validate" name="username" required="">
+                <label data-error="wrong" data-success="right" for="modalLRInput12" >Tu email</label>
               </div>
 
               <div class="md-form form-sm mb-1">
                 <div class="md-form">
                   <i class="fas fa-lock prefix"></i>
-                    <input type="password" id="materialRegisterFormPassword" class="form-control" required="" name="password1">
-                    <label for="materialRegisterFormPassword">Contrase&ntilde;a</label>
-                    <small id="materialRegisterFormPasswordHelpBlock" class="form-text d-flex align-items-start text-muted mb-4">Al menos 8 caracteres</small>
+                    <input type="password" id="password1" class="form-control validate" required="" name="password1" maxlength="45">
+                    <label for="password1">Contrase&ntilde;a</label>
+                    <small id="letras-numeros" class="form-text d-flex align-items-start text-muted red-text" style="margin-top: -35px">M&iacute;nimo de 8 caracteres con al menos una letra en miniscula, un n&uacute;mero y un car&aacute;cter especial.</small>
                   </div>
               </div>
 
               <div class="md-form form-sm mb-1">
                 <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput14" class="form-control form-control-sm validate" name="password2" required="">
-                <label data-error="wrong" data-success="right" for="modalLRInput14">Repetir contrase&ntilde;a</label>
+               
+                <div class="d-flex justify-content-end"><i class="fa fa-eye-slash show-hide-password" id="show-hide"></i></div>
+                <input type="password" id="password2" class="form-control form-control-sm validate" name="password2" required="" maxlength="45">
+                <label data-error="wrong" data-success="right" for="password2">Repetir contrase&ntilde;a</label>
+                <small id="mensaje_error" class="form-text text-muted green-text" style="margin-top: -35px; display: block;">Las contrase&ntilde;as coinciden.</small>
               </div>
             </div>
             <!--Footer-->
@@ -253,6 +260,10 @@
                 <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cancelar</button>
               </div>
             </form>
+
+              <div class="options text-justify">
+                <p data-error="wrong" data-success="right" for="modalLRInput14">Al hacer click en <b>crear</b> estas aceptando nuestros <a href="#terminos-de-uso" onclick="emitir_mensaje('warning','En construcci&oacute;n.');"><ins><em>t&eacute;rminos y condiciones de uso.</em></ins></a></p>
+              </div>
               <div class="options text-right">
                 <p class="pt-1">Tienes cuenta en RemesasVE? <a href="#" class="blue-text" data-toggle="tab" id="log-in"><b>Iniciar sesi&oacute;n</b></a></p>
               </div>
@@ -267,16 +278,7 @@
   </div>
 </div>
 <!--Modal: Login / Register Form-->
-
 {% endblock %}
-
-
-
-
-
-
-
-
 
 
 
@@ -333,6 +335,39 @@
   <script>
   $(document).ready(function(){
 
+    $('#mensaje_error').hide();  
+
+    $("#sign-up-create").prop('disabled','disabled');
+     
+
+
+
+    $("#show-hide").click(function(){
+      if(password2.type === 'password'){
+        $("#password1").prop('type','text');
+        $("#password2").prop('type','text');
+        $("#show-hide").removeClass("fa fa-eye-slash");
+        $("#show-hide").addClass("fa fa-eye");
+      }else{
+        $("#password1").prop('type','password');
+        $("#password2").prop('type','password');
+        $("#show-hide").removeClass("fa fa-eye");
+        $("#show-hide").addClass("fa fa-eye-slash");
+      }
+    });
+
+
+     $("#show-hide-login").click(function(){
+      if(password.type === 'password'){
+        $("#password").prop('type','text');
+        $("#show-hide-login").removeClass("fa fa-eye-slash");
+        $("#show-hide-login").addClass("fa fa-eye");
+      }else{
+        $("#password").prop('type','password');
+        $("#show-hide-login").removeClass("fa fa-eye");
+        $("#show-hide-login").addClass("fa fa-eye-slash");
+      }
+    });
 
     $("#log-in, #log-in-button, #log-in-button-index").click(function(){
       $("#panel-login-nav").addClass("active");
@@ -347,16 +382,62 @@
       $("#panel-signup").addClass("in show active");
     });
 
-
   });
+
 
 
   /*CAMBIAR LA CLASE ACTIVE SEGUN LA OPCION SELECCIONADA */
   active_option_menu({{value_menu_active}});
 
+
+  var ContarCaracteres = function(){
+    var value = $('#password1').val();
+    var regex = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/
+    //VALIDAR QUE LOS CARACTERES INTRODUCIDOS HAYAN 8 CARACTERES Y LETRAS Y NUMEROS
+    validar = regex.test(value);
+    if(validar){
+      $("#letras-numeros").addClass("green-text");
+      $("#letras-numeros").removeClass("red-text");
+    }else{  
+      $("#letras-numeros").addClass("red-text");
+      $("#letras-numeros").removeClass("green-text");
+      $("#sign-up-create").prop('disabled','disabled');
+    }
+
+
+
+
+
+  }
+
+
+  var SamePass = function() {
+    var pass1 = $('#password1').val();
+    var pass2 = $('#password2').val();
+    if (pass1 == pass2 && pass1 !='') {
+        $('#mensaje_error').hide();
+       // $('#mensaje_error').attr("class", "control-label col-md-12 text-success");
+        $('#mensaje_error').show();
+        $('#mensaje_error').html("Las constraseñas coinciden");
+        $("#mensaje_error").addClass("green-text");
+        $("#mensaje_error").removeClass("red-text");
+        $("#sign-up-create").prop('disabled','');
+    } else {
+        $('#mensaje_error').html("Las constraseñas no coinciden");
+        $('#mensaje_error').show();
+        $("#mensaje_error").addClass("red-text");
+        $("#mensaje_error").removeClass("green-text");
+        $("#sign-up-create").prop('disabled','disabled');
+    }
+}
+
+$("#password1").on('keyup', SamePass);
+$("#password2").on('keyup', SamePass);
+$("#password1").on('keyup', ContarCaracteres);
+$("#password2").on('keyup', ContarCaracteres);
+
 </script>
 
-  
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript">
     (function() {

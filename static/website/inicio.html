@@ -2,18 +2,22 @@
 
 {% block content %}
 
-
+{% if user_exists_error %}
+ <script type="text/javascript">
+ 	emitir_mensaje('error','Oops, Ha ocurrido un error.','El email introducido ya se encuentra registrado, Por favor verifique e intente nuevamente.');
+ </script>
+{% endif %}
 
 {% if error_user %}
  <script type="text/javascript">
- 	emitir_mensaje('El usuario introducido no existe');
+ 	emitir_mensaje('error','Oops, Ha ocurrido un error.','El email introducido no existe');
  </script>
 {% endif %}
 
 
 {% if error_password %}
  <script type="text/javascript">
- 	emitir_mensaje('La contrase\u00F1a introducida es invalida');
+ 	emitir_mensaje('error','Oops, Ha ocurrido un error.','La contrase\u00F1a introducida es invalida');
  </script>
 {% endif %}
 

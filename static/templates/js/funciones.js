@@ -1,7 +1,15 @@
 
 
-function  emitir_mensaje(mensaje){
-	Swal.fire({icon: 'error', title: 'Oops, Ha ocurrido un error.', text: mensaje})
+function  emitir_mensaje_datosuser(icono, titulo, mensaje){
+	Swal.fire({icon: icono, title: titulo, text: mensaje}).then(function(){
+		if(window.location.pathname != '/dashboard/profile/'){ 
+    		window.location = "profile/";
+		}
+	});	
+}
+
+function  emitir_mensaje(icono, titulo, mensaje){
+	Swal.fire({icon: icono, title: titulo, text: mensaje})
 }
 
 

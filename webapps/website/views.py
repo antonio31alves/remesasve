@@ -30,16 +30,22 @@ class inicio(CreateView):
 	def post(self, request, *args, **kwars):
 		form = SignUpForm(request.POST)
 		if request.POST.get('sign-up-create') == 'True':
-			if form.is_valid():
-				save = form.save(commit=False)
-				save.email = request.POST.get('username')
-				save = form.save()
-				#OBTENGO EL USURIO Y PASSWORD PARA AUTENTICARLOS Y REDIRECCIONAR AL SISTEMA LUEGO DE CREAR EL USUARIO.
-				username = form.cleaned_data.get('username')
-				password = form.cleaned_data.get('password1')
-				user = authenticate(username=username, password=password)
-				dj_login(request, user)
-				return redirect('dashboard')
+			user_exists = User.objects.filter(username=request.POST.get('username')).exists()
+			if user_exists == True:
+				user_exists_error = True
+				contexto = {'user_exists_error':user_exists_error}
+				return render(request, 'website/inicio.html', contexto)
+			else:
+				if form.is_valid():
+					save = form.save(commit=False)
+					save.email = request.POST.get('username')
+					save = form.save()
+					#OBTENGO EL USURIO Y PASSWORD PARA AUTENTICARLOS Y REDIRECCIONAR AL SISTEMA LUEGO DE CREAR EL USUARIO.
+					username = form.cleaned_data.get('username')
+					password = form.cleaned_data.get('password1')
+					user = authenticate(username=username, password=password)
+					dj_login(request, user)
+					return redirect('dashboard')
 			# if form.is_valid():
 			# 	user = form.save(commit=False)
 			# 	user.is_active = False
@@ -58,7 +64,7 @@ class inicio(CreateView):
 			# 	return HttpResponse('We have sent you an email, please confirm your email address to complete registration')
 			# else:
 			# 	form = UserSignUpForm()
-			return render(request, 'signup.html', {'form': form})
+			# return render(request, 'signup.html', {'form': form})
 
 
 
@@ -83,8 +89,6 @@ class inicio(CreateView):
 						error_password = True
 						contexto = {'error_password':error_password}
 						return render(request, 'website/inicio.html', contexto)
-
-		
 		return redirect('inicio')
 
 
