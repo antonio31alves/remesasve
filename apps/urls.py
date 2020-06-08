@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.contrib.auth.views import logout_then_login
 from django.urls import path, include
 from django.views.generic import RedirectView
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
@@ -24,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('logout', logout_then_login, name='logout'),
     path('accounts/login/', RedirectView.as_view(url='/')),
+      path('password_reset_form/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name='email/password_reset_form.html'), name="password_reset_form"),
     # 1- URLS WEBSITE
     path(r'', include('webapps.website.urls'), name="website"),
     # 2- URLS ADMIN DASHBOARD SYSTEM

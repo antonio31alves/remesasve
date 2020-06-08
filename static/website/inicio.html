@@ -2,6 +2,13 @@
 
 {% block content %}
 
+{% if send_message %}
+ <script type="text/javascript">
+ 	emitir_mensaje('info','Mensaje enviado','Hemos enviado un correo para reestablecer su contrasena, no olvide verificar en su bandeja de correos no deseados o spam.');
+ </script>
+{% endif %}
+
+
 {% if user_exists_error %}
  <script type="text/javascript">
  	emitir_mensaje('error','Oops, Ha ocurrido un error.','El email introducido ya se encuentra registrado, Por favor verifique e intente nuevamente.');

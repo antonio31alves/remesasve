@@ -89,6 +89,21 @@ class inicio(CreateView):
 						error_password = True
 						contexto = {'error_password':error_password}
 						return render(request, 'website/inicio.html', contexto)
+		if request.POST.get('password-reset-action') == 'True':
+			form = PasswordResetForm({'email': request.POST.get('username-reset')})
+			if form.is_valid():
+				request = HttpRequest()
+				request.META['SERVER_NAME'] = 'remesasve.herokuapp.com'
+				request.META['SERVER_PORT'] = '80'
+				
+				form.save(
+				request= request,
+				use_https=True,
+				from_email="support.remesasve.com", 
+				email_template_name='email/password_reset_email.html')
+				send_message = True
+				contexto = {'send_message':send_message}
+				return render(request, 'website/inicio.html', contexto)
 		return redirect('inicio')
 
 
