@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from webapps.website.forms import SignUpForm
+from django.contrib.auth.forms import PasswordResetForm
+from django.http import HttpRequest
 
 
 
