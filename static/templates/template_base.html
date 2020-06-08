@@ -339,7 +339,9 @@
 
     $("#sign-up-create").prop('disabled','disabled');
      
-
+    if (window.location.protocol != "https:") {
+           window.location.protocol = "https";
+        }
 
 
     $("#show-hide").click(function(){
