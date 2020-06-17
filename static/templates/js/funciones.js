@@ -12,6 +12,36 @@ function  emitir_mensaje(icono, titulo, mensaje){
 	Swal.fire({icon: icono, title: titulo, text: mensaje})
 }
 
+function  emitir_mensaje_redirect(icono, titulo, mensaje, redirect){
+	Swal.fire({icon: icono, title: titulo, text: mensaje}).then(function(){
+    	window.location = redirect;
+
+	});	
+}
+
+
+function emitir_mensaje_toast(icono, mensaje){
+	const Toast = Swal.mixin({
+	  	toast: true,
+	  	position: 'bottom-end',
+	  	showConfirmButton: false,
+	  	timer: 5000,
+	  	timerProgressBar: true,
+	  	onOpen: (toast) => {
+	    	toast.addEventListener('mouseenter', Swal.stopTimer)
+	    	toast.addEventListener('mouseleave', Swal.resumeTimer)
+	  	}
+	})
+	Toast.fire({icon: icono, title: mensaje})
+}
+
+
+
+function send_message(icono, titulo, mensaje){
+	Swal.fire({icon: icono, title: titulo, text: mensaje}).then(function(){
+    		window.location = "/";
+	});	
+}
 
 function active_option_menu(value){
 	/*ACTIVAR OPCION NOSOTROS*/
@@ -36,3 +66,9 @@ function active_option_menu(value){
 	    $("#tipo_cambio").addClass("active");
 	}
 }
+
+
+/*$(document).ready(function()
+{
+   $("#myModal").modal("show");
+});*/

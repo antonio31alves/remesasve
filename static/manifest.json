@@ -1,0 +1,20 @@
+{
+  "short_name": "RemesasVE",
+  "name": "RemesasVE Facil, rapido y seguro",
+  "icons": [
+    {
+      "src": "/static/mdbootstrap/img/logo-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/mdbootstrap/img/logo-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#212121",
+  "display": "fullscreen",
+  "theme_color": "#212121" 
+}

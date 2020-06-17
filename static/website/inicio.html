@@ -4,10 +4,18 @@
 
 {% if send_message %}
  <script type="text/javascript">
- 	emitir_mensaje('info','Mensaje enviado','Hemos enviado un correo para reestablecer su contrasena, no olvide verificar en su bandeja de correos no deseados o spam.');
+ 	send_message('info','Mensaje enviado','Hemos enviado un correo para reestablecer su contrase\u00F1a, no olvide verificar en su bandeja de correos no deseados o spam.');
+ 	/*window.setTimeout(function(){
+ 		window.location.href = "/";
+    }, 2500);*/
  </script>
 {% endif %}
 
+{% if password_reset %}
+ <script type="text/javascript">
+ 	emitir_mensaje('info','Restablecimiento de contrase\u00F1a','Se ha restablecido su contrasen\u00F1a satisfactoriamente');
+ </script>
+{% endif %}
 
 {% if user_exists_error %}
  <script type="text/javascript">
@@ -29,7 +37,11 @@
 {% endif %}
 
 
-
+{% if account_active %}
+ <script type="text/javascript">
+ 	emitir_mensaje_redirect('error','Oops, Ha ocurrido un error.','Este enlace ya ha sido utilizado para activar la cuenta {{username}}','/');
+ </script>
+{% endif %}
 
 
 
@@ -55,10 +67,10 @@
 
 				
 				<div class="col-12">
-					<h1>RemesasVE</h1>
+					<h1>RemesasVE {{password1}} == {{password2}}</h1>
 				</div>
 				<div class="col-12">
-					<h4>Facil, rapido y seguro</h4>
+					<h4>Facil, rapido y seguro {{form.errors}}</h4>
 				</div>
 			
 				<!-- <a href="{% url 'log-in' %}" class="btn btn-default waves-effect ml-3">Iniciar sesi&oacute;n</a> -->

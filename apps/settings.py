@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'naomi',
     'webapps.website',
     'webapps.dashboard',
+    'django_inlinecss',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -185,6 +188,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'service-worker.js')
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

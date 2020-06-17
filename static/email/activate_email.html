@@ -53,7 +53,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="480" >
                 <tr>
                     <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                      <h3 style="font-size: 32px; font-weight: 400; margin: 0;">Olvidaste tu contrase&ntilde;a?</h3>
+                      <h3 style="font-size: 32px; font-weight: 400; margin: 0;">¡Bienvenido a RemesasVE!</h3>
                     </td>
                 </tr>
             </table>
@@ -64,7 +64,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="480" >
               <tr>
                 <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
-                  <p style="margin: 0;">Restablecer tu contrase&ntilde;a es facil. Simplemente presione el bot&oacute;n a continuaci&oacute;n y siga las instrucciones.</p>
+                  <p style="margin: 0;">Para continuar con la activaci&oacute;n de tu cuenta simplemente presione el bot&oacute;n a continuaci&oacute;n.</p>
                 </td>
               </tr>
               <tr>
@@ -76,7 +76,7 @@
                           <tr>
                               <td align="center" style="border-radius: 3px;" bgcolor="#288BD5">
                               	{% block reset_link %}
-                              	<a href="http://{{ domain }}{% url 'password_reset_form' uidb64=uid token=token %}" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #288BD5; display: inline-block;">Restablecer contrase&ntilde;a</a>
+                              	<a href="http://{{ domain }}{% url 'activate_account' uidb64=uid token=token %}" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #288BD5; display: inline-block;">Activar cuenta</a>
                               	{% endblock%}
                               </td>
                           </tr>
@@ -94,7 +94,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="480" >
                 <tr>
                   <td bgcolor="#111111" align="center" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
-                    <p style="margin: 0;">Si tu no has solicitado restablecer tu contrase&ntilde;a, por favor ignora este correo.</p>
+                    <p style="margin: 0;">Una vez tengas tu cuenta activa podras continuar utilizando nuestra plataforma. Gracias por preferirnos. RemesasVE Facil, rapido y seguro.</p>
                   </td>
                 </tr>
             </table>

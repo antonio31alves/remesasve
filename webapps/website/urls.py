@@ -1,8 +1,7 @@
-
 from django.urls import path
 from .views import inicio, quienes_somos, preguntas_frecuentes, tipo_cambio, contactenos
 from .views import login, signup
-
+from .functions import activate_account
 
 urlpatterns = [
 	path('', inicio.as_view(), name="inicio"),
@@ -12,4 +11,6 @@ urlpatterns = [
 	path('contactenos', contactenos, name="contactenos"),
 	path('log-in', login, name="log-in"),
 	path('sign-up', signup, name="sign-up"),
+	path('activate_account/<uidb64>/<token>', activate_account, name="activate_account"),
+	
 ]

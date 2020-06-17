@@ -2,9 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	{% block tittle %}
 	<title>Dashboard</title>
+	{% endblock %}
+	<link rel="icon" href="{% static 'mdbootstrap/img/mdb-favicon.ico' %}" type="image/x-icon">
 	<!--Import Google Icon Font-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}"  media="screen,projection"/>
 	<script src="{% static 'templates/js/sweetalert2.js' %}"></script>
@@ -47,6 +51,22 @@
 			padding-left: 0;
 		}
 	}
+	.show-hide-password{
+    position: absolute;
+    top: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+    right: 15px;
+  }
+
+ .material-icons.active {
+  color: #1e88e5 !important;
+  }
+
+ .material-icons{
+  color: #999 !important;
+  }
 </style>
 <body>
 	{% block header %}
@@ -61,12 +81,13 @@
 	 		emitir_mensaje_datosuser('info','¡Bienvenido a RemesasVE!','Ya hemos confirmado tu direccion de correo electronico. Ahora ayudanos a completar los datos de tu perfil.');
 	 	}
 	 </script>
+	
 	{% endif %}
 	{% endblock %}
 
 	{% block nav %}
 	<div class="navbar-fixed"> 
-		<nav class="grey darken-4">
+		<nav class="grey darken-4 nav">
 			<a class="brand-logo left show-on-small hide-on-large-only" style="margin-left: 40px"><img src="{% static 'mdbootstrap/img/logo.png'%}" width="140px" height="50px" ></a>
 			<a href="#" data-target="slide-out" class="sidenav-trigger white-text" style="margin-top: 8px;"><i class="material-icons">menu</i></a>
 			<a class="dropdown-trigger btn btn-floating btn-medium waves-effect waves-light light-blue darken-1 right" data-target='dropdown-user' style="margin-top: 10px; margin-right: 10px;"><i class="material-icons" style="margin-top: -10px;">person</i></a>
@@ -78,7 +99,6 @@
 			    <li><a href="{% url 'logout' %}" class="blue-text text-darken-3"><i class="material-icons">exit_to_app</i>Finalizar sesi&oacute;n</a></li>
 			 </ul>
 		</nav>
-
 	</div>
 	{% if user.userprofile.email_active == False %}
 	<nav class="col s12 red darken-1" style="margin-top: -12px;">
@@ -134,6 +154,7 @@
   <script src="{% static 'materialize/js/materialize.min.js' %}"></script>
   <script type="text/javascript">
   $(document).ready(function(){
+  	$('#mensaje_error').hide(); 
  	$('.select').formSelect();
 	
     $('.sidenav').sidenav();
@@ -152,7 +173,76 @@
    	 });
 
   });
-       
+
+
+   $("#show-hide").click(function(){
+      if(new_password2.type === 'password'){
+        $("#new_password1").prop('type','text');
+        $("#new_password2").prop('type','text');
+        $("#show-hide").removeClass("fa fa-eye-slash");
+        $("#show-hide").addClass("fa fa-eye");
+      }else{
+        $("#new_password1").prop('type','password');
+        $("#new_password2").prop('type','password');
+        $("#show-hide").removeClass("fa fa-eye");
+        $("#show-hide").addClass("fa fa-eye-slash");
+      }
+    });
+      
+      var ContarCaracteres = function(){
+    var value = $('#new_password1').val();
+    var regex = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/
+    //VALIDAR QUE LOS CARACTERES INTRODUCIDOS HAYAN 8 CARACTERES Y LETRAS Y NUMEROS
+    validar = regex.test(value);
+    if(validar){
+      $("#letras-numeros").addClass("green-text");
+      $("#letras-numeros").removeClass("red-text");
+      $("#new_password1").addClass("validate");
+      $("#new_password1").removeClass("invalid");
+    }else{
+      $("#new_password1").addClass("invalid");
+      $("#new_password1").removeClass("validate");
+      $("#letras-numeros").addClass("red-text");
+      $("#letras-numeros").removeClass("green-text");
+      $("#reset-password").prop('disabled','disabled');
+    }
+
+
+
+
+
+  }
+
+
+  var SamePass = function() {
+    var pass1 = $('#new_password1').val();
+    var pass2 = $('#new_password2').val();
+    if (pass1 == pass2 && pass1 !='') {
+        $('#mensaje_error').hide();
+       // $('#mensaje_error').attr("class", "control-label col-md-12 text-success");
+        $('#mensaje_error').show();
+        $('#mensaje_error').html("Las constraseñas coinciden");
+        $("#mensaje_error").addClass("green-text");
+        $("#mensaje_error").removeClass("red-text");
+        $("#reset-password").prop('disabled','');
+        $("#new_password2").addClass("validate");
+      	$("#new_password2").removeClass("invalid");
+    } else {
+    	$("#new_password2").addClass("invalid");
+      	$("#new_password2").removeClass("validate");
+        $('#mensaje_error').html("Las constraseñas no coinciden");
+        $('#mensaje_error').show();
+        $("#mensaje_error").addClass("red-text");
+        $("#mensaje_error").removeClass("green-text");
+        $("#reset-password").prop('disabled','disabled');
+    }
+}
+
+$("#new_password1").on('keyup', SamePass);
+$("#new_password2").on('keyup', SamePass);
+$("#new_password1").on('keyup', ContarCaracteres);
+$("#new_password2").on('keyup', ContarCaracteres);
+
   </script>
 </body>
 </html>
