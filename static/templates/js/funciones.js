@@ -23,7 +23,7 @@ function  emitir_mensaje_redirect(icono, titulo, mensaje, redirect){
 function emitir_mensaje_toast(icono, mensaje){
 	const Toast = Swal.mixin({
 	  	toast: true,
-	  	position: 'bottom-end',
+	  	position: 'top-end',
 	  	showConfirmButton: false,
 	  	timer: 5000,
 	  	timerProgressBar: true,
