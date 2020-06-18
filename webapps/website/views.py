@@ -147,7 +147,13 @@ def tipo_cambio(request):
 def contactenos(request):
 	return render(request, 'website/contactenos.html')
 
-def login(request):
+def login_app(request):
+	return render(request, 'website/login.html')
+
+def home_app(request):
+	return render(request, 'website/home_app.html')
+
+def login_app(request):
 	return render(request, 'website/login.html')
 
 def signup(request):
